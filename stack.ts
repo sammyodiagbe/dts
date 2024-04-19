@@ -1,15 +1,15 @@
 
 
 type StackBluePrint = {
-    stack: any[],
-    
+    stack: number[],
+    search(item: number): string,
     peek(): any,
     pop(): any,
     push(data: number): void,
     print(): void
 }
 class Stack implements StackBluePrint{
-    public stack: any = [];
+    public stack: number[] = [];
     public size: number = 0;
     constructor() {
         this.stack = [];
@@ -34,16 +34,29 @@ class Stack implements StackBluePrint{
             console.log(`${item} => ${this.stack[item]}`);
         }
     }
+
+    search(item: number): string {
+        for(let t in this.stack) {
+            console.log(this.stack[t] === item)
+            if(this.stack[t] === item) {
+                // means item has been found
+                return `${this.stack[t]} was found at index ${t}`;
+            }
+        }
+        return 'Item not found';
+    }
 }
 
 
 const myStack = new Stack();
 myStack.push(10);
-myStack.push(10);
-myStack.push(10);
-myStack.push(10);
-myStack.push(10);
+myStack.push(9);
+myStack.push(8);
+myStack.push(7);
+myStack.push(6);
 console.log(myStack.peek())
 myStack.print()
 myStack.pop();
 myStack.print();
+console.log('Searching!')
+console.log(myStack.search(7));
