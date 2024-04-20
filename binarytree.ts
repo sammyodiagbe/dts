@@ -13,14 +13,14 @@ class BinaryNode {
     if (this.data === null) {
       this.data = value;
     } else {
-      if (this.data < value) {
+      if (value < this.data) {
         if (this.left === null) {
           // create a new left node and insert it
           this.left = new BinaryNode(value);
         } else {
           this.left.insertNode(value);
         }
-      } else if (this.data > value) {
+      } else if (value > this.data) {
         if (this.right === null) {
           this.right = new BinaryNode(value);
         } else {
